@@ -1,91 +1,121 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from "react";
+import axios from "axios";
+import jobsiteLocations from "../../data/locations";
+
+const geolib = require("geolib");
+
+const findNearestLocations = (referencePoint, locations, topN) => {
+  const distances = locations.map((location) => {
+    return {
+      ...location,
+      distance: geolib.getDistance(referencePoint, {
+        latitude: location.latitude,
+        longitude: location.longitude,
+      }),
+    };
+  });
+
+  distances.sort((a, b) => a.distance - b.distance);
+
+  return distances.slice(0, topN).map((location) => location.address);
+};
 
 export default function Home() {
+  const [userLocation, setUserLocation] = useState("");
+  const [showLocations, setShowLocations] = useState(false);
+  const [nearestLocations, setNearestLocations] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [coordinates, setCoordinates] = useState(null);
+
+  const topN = 5; // top 5 nearest locations
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage(null); // Reset error message
+    setCoordinates(null); // Reset coordinates
+    setShowLocations(false); // Reset show locations flag
+
+    try {
+      const response = await axios.get(
+        "http://dev.virtualearth.net/REST/v1/Locations",
+        {
+          params: {
+            query: userLocation,
+            key: "Avk_H24dJEFyiHLK5_4kERsDWs0qNLCPEQGTkZ8nD1YBq8eikai-ih-e-Ox8M55n",
+          },
+        }
+      );
+
+      if (response.data.resourceSets[0].resources.length > 0) {
+        const location =
+          response.data.resourceSets[0].resources[0].point.coordinates;
+        const referencePoint = {
+          latitude: location[0],
+          longitude: location[1],
+        };
+        setCoordinates(referencePoint);
+        console.log("Latitude:", location[0]);
+        console.log("Longitude:", location[1]);
+
+        // Find the nearest locations using the geocoded user location
+        const locations = findNearestLocations(
+          referencePoint,
+          jobsiteLocations,
+          topN
+        );
+
+        console.log(locations);
+        setNearestLocations(locations);
+        setShowLocations(true); // Display the locations on the page
+      } else {
+        setErrorMessage(
+          "Failed to geocode the provided address. Please enter a valid address."
+        );
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setErrorMessage(
+        "Failed to geocode the provided address. Please enter a valid address."
+      );
+    }
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <div>
+      <h1>Find Nearby Homes</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="address">Enter your address:</label>
+        <input
+          id="address"
+          value={userLocation}
+          onChange={(e) => setUserLocation(e.target.value)}
+          type="text"
+          placeholder="Type your address here"
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+        <button type="submit">Show work of nearby homes</button>
+      </form>
+
+      {errorMessage && <p>Error: {errorMessage}</p>}
+
+      {coordinates && (
+        <p>
+          Coordinates: Latitude {coordinates.latitude}, Longitude{" "}
+          {coordinates.longitude}
+        </p>
+      )}
+
+      {showLocations && (
+        <div>
+          <h2>Nearest Locations:</h2>
+          <ul>
+            {nearestLocations.map((location, index) => (
+              <li key={index}>{location}</li>
+            ))}
+          </ul>
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      )}
+    </div>
+  );
 }
