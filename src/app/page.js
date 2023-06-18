@@ -39,7 +39,7 @@ export default function Home() {
 
     try {
       const response = await axios.get(
-        "http://dev.virtualearth.net/REST/v1/Locations",
+        "https://dev.virtualearth.net/REST/v1/Locations",
         {
           params: {
             query: userLocation,
