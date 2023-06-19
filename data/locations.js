@@ -146,8 +146,8 @@ const jobsiteLocations = [
   {
     id: 25,
     address: "1034 Musgrass Cur, West Melbourne, FL 32904",
-    latitude: "28.0441842",
-    longitude: "-80.689189",
+    latitude: "28.04437356",
+    longitude: "-80.68919973",
   },
   {
     id: 26,
@@ -464,8 +464,8 @@ const jobsiteLocations = [
   {
     id: 78,
     address: "11259 Spring Point Cir, Riverview, FL 33759",
-    latitude: "27.9711651",
-    longitude: "-82.6969408",
+    latitude: "27.81932075",
+    longitude: "-82.31930605",
   },
   {
     id: 79,
@@ -484,12 +484,6 @@ const jobsiteLocations = [
     address: "11310 Emerald Shore Dr, Riverview, FL 33579",
     latitude: "27.8203511",
     longitude: "-82.3180783",
-  },
-  {
-    id: 82,
-    address: "11318 Glen Laurel Estates Dr, Jacksonville, FL 32257",
-    latitude: "30.1717136",
-    longitude: "-81.57316",
   },
   {
     id: 83,
@@ -806,8 +800,8 @@ const jobsiteLocations = [
   {
     id: 135,
     address: "11708 Thicket Wood Dr, Riverview, FL 33544",
-    latitude: "28.2621197",
-    longitude: "-82.3777335",
+    latitude: "27.81987726",
+    longitude: "-82.30156101",
   },
   {
     id: 136,
@@ -1112,8 +1106,8 @@ const jobsiteLocations = [
   {
     id: 186,
     address: "12266 Moss Lake Loop, New Port Richey, FL 32655",
-    latitude: "28.1868217",
-    longitude: "-82.6136895",
+    latitude: "28.18701081",
+    longitude: "-82.61370023",
   },
   {
     id: 187,
@@ -1142,8 +1136,8 @@ const jobsiteLocations = [
   {
     id: 191,
     address: "12304 Juniper Field Dr, Riverview, FL 33579",
-    latitude: "27.7969518",
-    longitude: "-82.277997",
+    latitude: "27.79714159",
+    longitude: "-82.27801846",
   },
   {
     id: 192,
@@ -1406,8 +1400,8 @@ const jobsiteLocations = [
   {
     id: 235,
     address: "12644 Westfield Lake Cr., Winter Garden, FL 34787",
-    latitude: "28.5379477",
-    longitude: "-81.5617422",
+    latitude: "28.53814561",
+    longitude: "-81.56177439",
   },
   {
     id: 236,
@@ -2312,8 +2306,8 @@ const jobsiteLocations = [
   {
     id: 386,
     address: "17106 Wrigley Ct., Fort Myers, FL 33908",
-    latitude: "26.4920459",
-    longitude: "-81.8886922",
+    latitude: "26.49222832",
+    longitude: "-81.88867074",
   },
   {
     id: 387,
@@ -2732,8 +2726,8 @@ const jobsiteLocations = [
   {
     id: 456,
     address: "2064 Nerva Rd, Winter Garden, FL 32119",
-    latitude: "28.5042245",
-    longitude: "-81.621297",
+    latitude: "28.50439419",
+    longitude: "-81.621297002525",
   },
   {
     id: 457,
@@ -2936,8 +2930,8 @@ const jobsiteLocations = [
   {
     id: 490,
     address: "235 Peter Island Dr, St. Augustine, FL 32902",
-    latitude: "30.0335797",
-    longitude: "-81.5205866",
+    latitude: "30.03377473",
+    longitude: "-81.52061879",
   },
   {
     id: 491,
@@ -3092,8 +3086,8 @@ const jobsiteLocations = [
   {
     id: 516,
     address: "258 E Teague Bay Dr, St. Augustine, FL 32086",
-    latitude: "30.0340509",
-    longitude: "-81.5171897",
+    latitude: "30.0342366398525",
+    longitude: "-81.51715752",
   },
   {
     id: 517,
@@ -3338,20 +3332,20 @@ const jobsiteLocations = [
   {
     id: 557,
     address: "2850 Pewter Mist Ct., Oviedo, FL 32763",
-    latitude: "28.9392593",
+    latitude: "28.64817052",
     longitude: "-81.3069315",
   },
   {
     id: 558,
     address: "2874 Pewter Mist Ct, Oviedo, FL 32765",
     latitude: "28.6474612",
-    longitude: "-81.2562954",
+    longitude: "-81.25564505",
   },
   {
     id: 559,
     address: "2885 Longleaf Lan, Palm Harbor, FL 34684",
-    latitude: "28.0665186",
-    longitude: "-82.7164414",
+    latitude: "28.06675525",
+    longitude: "-82.71649505",
   },
   {
     id: 560,
@@ -3380,7 +3374,7 @@ const jobsiteLocations = [
   {
     id: 564,
     address: "2905 Boat Dock Dr, Kissimmee, FL 34746",
-    latitude: "28.2671784",
+    latitude: "28.26736736",
     longitude: "-81.4214167",
   },
   {
@@ -3440,8 +3434,8 @@ const jobsiteLocations = [
   {
     id: 574,
     address: "3017 Winglewood Cir, Lutz, FL 32448",
-    latitude: "28.1511243",
-    longitude: "-82.4614831",
+    latitude: "28.16673358",
+    longitude: "-82.4879453",
   },
   {
     id: 575,
@@ -4094,8 +4088,8 @@ const jobsiteLocations = [
   {
     id: 683,
     address: "4113 Sun Village Ct, Mulberry, FL 32258",
-    latitude: "27.8953038",
-    longitude: "-81.9734172",
+    latitude: "27.93618727",
+    longitude: "-81.99600314",
   },
   {
     id: 684,
@@ -4351,9 +4345,9 @@ const jobsiteLocations = [
   },
   {
     id: 726,
-    address: "4529 Gray Hawk St., Orange Park, FL 32250",
-    latitude: "30.2745944",
-    longitude: "-81.4114142",
+    address: "4529 Gray Hawk St., Orange Park, FL 32065",
+    latitude: "30.17024905",
+    longitude: "-81.85520316",
   },
   {
     id: 727,
@@ -4578,12 +4572,6 @@ const jobsiteLocations = [
     longitude: "-81.4487043",
   },
   {
-    id: 764,
-    address: "5111 Admiral Pointe Dr, Apollo Beach, FL",
-    latitude: "27.7730836",
-    longitude: "-82.4075935",
-  },
-  {
     id: 765,
     address: "5113 Tari Stream Way, Brandon, FL 33511",
     latitude: "27.8634298",
@@ -4598,8 +4586,8 @@ const jobsiteLocations = [
   {
     id: 767,
     address: "514 Casa Sevilla Ave, St. Augustine, FL 32092",
-    latitude: "29.9661404",
-    longitude: "-81.4730827",
+    latitude: "29.96710408",
+    longitude: "-81.47269664",
   },
   {
     id: 768,
@@ -5526,12 +5514,6 @@ const jobsiteLocations = [
     longitude: "-81.6637123",
   },
   {
-    id: 922,
-    address: "77167 Cobblestone Dr, Yulee, FL 32907",
-    latitude: "30.6319034",
-    longitude: "-81.6064866",
-  },
-  {
     id: 923,
     address: "7721 Maroon Peak Dr, Ruskin, FL 33573",
     latitude: "27.7480659",
@@ -5912,8 +5894,8 @@ const jobsiteLocations = [
   {
     id: 986,
     address: "9223 English Oaks Ln, Riverview, FL",
-    latitude: "27.9070526",
-    longitude: "-82.3526803",
+    latitude: "27.90720427",
+    longitude: "-82.35262666",
   },
   {
     id: 987,
