@@ -39,11 +39,14 @@ export function Convo() {
                 )
             })}
 
-            <form className="mt-12" onSubmit={handleSubmit}>
-                <p>User Message</p>
-                <textarea className="mt-2 w-full bg-slate-600 p-2" placeholder="What is stucco?" value={input} onChange={handleInputChange}></textarea>
-                <button className="rounded-md bg-blue-600 p-2 mt-2">Send Message</button>
-            </form>
+            <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:border md:py-4 mt-6">
+
+                <form className="" onSubmit={handleSubmit}>
+                    <p>User Message</p>
+                    <textarea className="mt-2 w-full bg-gray-600 text-white p-2" placeholder="What is stucco?" value={input} onChange={handleInputChange}></textarea>
+                    <button className="rounded-md bg-gray-400 text-gray-800 p-2 mt-2">Send Message</button>
+                </form>
+            </div>
         </div>
     )
 }

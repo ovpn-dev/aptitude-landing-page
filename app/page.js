@@ -85,17 +85,21 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Find Nearby Homes</h1>
+      <h1 className="text-2xl font-semibold">Find Nearby Homes</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="address">Enter your address:</label>
-        <input
-          id="address"
-          value={userLocation}
-          onChange={(e) => setUserLocation(e.target.value)}
-          type="text"
-          placeholder="Type your address here"
-        />
-        <button type="submit">Show work of nearby homes</button>
+        <div>
+
+          <label htmlFor="address">Enter your address:</label>
+          <input
+            className="w-[400px] border border-black"
+            id="address"
+            value={userLocation}
+            onChange={(e) => setUserLocation(e.target.value)}
+            type="text"
+            placeholder="Type your address here"
+          />
+        </div>
+        <button className="rounded-md bg-gray-400 text-gray-800 p-1 mt-2" type="submit">Show work of nearby homes</button>
       </form>
 
       {errorMessage && <p>Error: {errorMessage}</p>}
@@ -108,7 +112,7 @@ export default function Home() {
       )}
 
       {showLocations && (
-        <div>
+        <div className="mt-2">
           <h2>Nearest Locations:</h2>
           <ul>
             {nearestLocations.map((location, index) => (
@@ -117,7 +121,6 @@ export default function Home() {
           </ul>
         </div>
       )}
-
       <Chat />
     </div>
   );
