@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import jobsiteLocations from "../data/locations";
-import { Chat } from './components/chat'
+import { Chat } from '../components/chat'
 
 const geolib = require("geolib");
 
