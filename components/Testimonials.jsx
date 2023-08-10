@@ -66,11 +66,11 @@ export default function Testimonial() {
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center space-x-3">
-            <img
+            {/* <img
               class="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
               alt="profile picture"
-            />
+            /> */}
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>06/17/2023 &ndash; Natasha</div>
             </div>
@@ -91,11 +91,11 @@ export default function Testimonial() {
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center space-x-3">
-            <img
+            {/* <img
               class="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
               alt="profile picture"
-            />
+            /> */}
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>05/22/2023 &ndash; Collin</div>
             </div>
@@ -117,11 +117,11 @@ export default function Testimonial() {
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center space-x-3">
-            <img
+            {/* <img
               class="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
               alt="profile picture"
-            />
+            /> */}
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>05/16/2023 &ndash; Robert</div>
             </div>
@@ -142,11 +142,11 @@ export default function Testimonial() {
             </p>
           </blockquote>
           <figcaption className="flex items-center justify-center space-x-3">
-            <img
+            {/* <img
               class="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
               alt="profile picture"
-            />
+            /> */}
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>10/24/2022 &ndash; Jessica</div>
             </div>
