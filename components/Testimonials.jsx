@@ -104,12 +104,12 @@ export default function Testimonial() {
         <figure className="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-bl-lg md:border-b-0 md:border-r dark:bg-gray-800 dark:border-gray-700">
           <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              I'm Delighted with the Results of My Exterior Restoration
+              I&apos;m Delighted with the Results of My Exterior Restoration
             </h3>
             <p className="my-4">
               &ldquo;I recently had the pleasure of working with Aptitude
-              Associates to restore the exterior of my home, and I couldn't be
-              happier with the results. From start to finish, the team at
+              Associates to restore the exterior of my home, and I couldn&apos;t
+              be happier with the results. From start to finish, the team at
               Aptitude Associates exhibited a level of professionalism and
               attention to detail that truly impressed me. They took the time to
               thoroughly assess the situation and develop a plan that addressed
