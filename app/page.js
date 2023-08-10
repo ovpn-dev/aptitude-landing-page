@@ -29,7 +29,7 @@ export default function Home() {
       {/* <VideoBg /> */}
       <CTA />
       <Gallery />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Footer />
     </>
   );
