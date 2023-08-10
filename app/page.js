@@ -5,10 +5,10 @@ import { Chat } from "../components/chat";
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
-import Testimonial from "../components/Testimonials";
 import Gallery from "../components/gallery";
 import Nav from "../components/Nav";
 import VideoBg from "../components/Videobg";
+import Testimonial from "../components/Testimonials";
 
 export default function Home() {
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Home() {
       {/* <VideoBg /> */}
       <CTA />
       <Gallery />
-      {/* <Testimonial /> */}
+      <Testimonial />
       <Footer />
     </>
   );
