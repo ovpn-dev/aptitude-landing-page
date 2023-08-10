@@ -129,12 +129,12 @@ export default function GeoHome() {
 
       {errorMessage && <p>Error: {errorMessage}</p>}
 
-      {coordinates && (
+      {/* {coordinates && (
         <p>
           Coordinates: Latitude {coordinates.latitude}, Longitude{" "}
           {coordinates.longitude}
         </p>
-      )}
+      )} */}
 
       {showLocations && (
         <div className="mt-2">
