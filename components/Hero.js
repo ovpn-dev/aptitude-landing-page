@@ -56,7 +56,7 @@ export default function Hero() {
             </h1>
             <br />
             <h2 className="text-2xl tracking-tight text-gray-900 sm:text-5xl">
-              Serving all of Florida from 5 local officies
+              Serving all of Florida from 5 local offices
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Aptitude Associates is the leading stucco restoration and full
