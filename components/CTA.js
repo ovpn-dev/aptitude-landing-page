@@ -41,9 +41,10 @@ export default function CTA() {
           alt="dashboard image"
           height={1080}
         />
-        <img
-          class="w-full hidden dark:block"
+        <Image
+          class="w-full mt-5 hidden dark:block rounded-lg"
           src={banner}
+          height={1080}
           alt="dashboard image"
         />
       </div>{" "}
