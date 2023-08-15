@@ -68,10 +68,10 @@ export default function Testimonial() {
           <figcaption className="flex items-center justify-center space-x-3">
             <Image
               className="rounded-full w-9 h-9"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/lana-byrd.png"
               alt="profile picture"
-              width={10}
-              height={10}
+              width={40}
+              height={40}
             />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>06/17/2023 &ndash; Natasha</div>
@@ -97,8 +97,8 @@ export default function Testimonial() {
               className="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
               alt="profile picture"
-              width={10}
-              height={10}
+              width={40}
+              height={40}
             />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>05/22/2023 &ndash; Collin</div>
@@ -123,10 +123,10 @@ export default function Testimonial() {
           <figcaption className="flex items-center justify-center space-x-3">
             <Image
               className="rounded-full w-9 h-9"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png"
               alt="profile picture"
-              width={10}
-              height={10}
+              width={40}
+              height={40}
             />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>05/16/2023 &ndash; Robert</div>
@@ -152,8 +152,8 @@ export default function Testimonial() {
               className="rounded-full w-9 h-9"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
               alt="profile picture"
-              width={10}
-              height={10}
+              width={40}
+              height={40}
             />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>10/24/2022 &ndash; Jessica</div>
@@ -164,3 +164,5 @@ export default function Testimonial() {
     </section>
   );
 }
+// https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png
+// https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/lana-byrd.png

@@ -42,9 +42,8 @@ export default function Home() {
     <>
       <Nav />
       <Hero />
-      {/* <VideoBg /> */}
+      <StuccoEstimateCalculator /> {/* <VideoBg /> */}
       <CTA />
-      <StuccoEstimateCalculator />
       <Gallery />
       <Testimonial />
       <Footer />
