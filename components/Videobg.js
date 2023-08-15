@@ -1,3 +1,5 @@
+import StuccoEstimateCalculator from "./estimateCalc";
+
 export default function VideoBg() {
   return (
     <section class="relative bg-white h-screen flex flex-col items-center justify-center text-center text-white py-3 px-0">
@@ -19,7 +21,9 @@ export default function VideoBg() {
           allowfullscreen
         ></iframe>
       </div>
-      <div class="video-content my-10 space-y-2"></div>
+      <div class="video-content my-10 space-y-2">
+        {/* <StuccoEstimateCalculator /> */}
+      </div>
     </section>
   );
 }

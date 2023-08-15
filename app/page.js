@@ -9,6 +9,7 @@ import Gallery from "../components/gallery";
 import Nav from "../components/Nav";
 import VideoBg from "../components/Videobg";
 import Testimonial from "../components/Testimonials";
+import StuccoEstimateCalculator from "../components/estimateCalc";
 
 export default function Home() {
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Home() {
       <Hero />
       {/* <VideoBg /> */}
       <CTA />
+      <StuccoEstimateCalculator />
       <Gallery />
       <Testimonial />
       <Footer />

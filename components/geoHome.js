@@ -83,12 +83,12 @@ export default function GeoHome() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl py-8 sm:py-12 lg:py-12 text-center ">
+    <div className="mx-auto max-w-2xl py-8 sm:py-12 lg:py-12 text-center">
       <h1 className="text-2xl font-semibold px-5 py-5">
         See our work for yourself!
       </h1>
-      <h3 class="mb-2 text-sm font-medium text-gray-900 dark:text-white">
-        Simple enter your address to see homes we have completed nearby.
+      <h3 class="mb-2 text-sm font-medium text-gray-900">
+        Simply enter your address to see homes we have completed nearby.
       </h3>
       <form onSubmit={handleSubmit}>
         <div class="relative">
