@@ -1,13 +1,13 @@
 "use client";
 import { useEffect } from "react";
 import GeoHome from "../components/geoHome";
-import { Chat } from "../components/chat";
+
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import Gallery from "../components/gallery";
 import Nav from "../components/Nav";
-import VideoBg from "../components/Videobg";
+
 import Testimonial from "../components/Testimonials";
 import StuccoEstimateCalculator from "../components/estimateCalc";
 
@@ -42,7 +42,7 @@ export default function Home() {
     <>
       <Nav />
       <Hero />
-      <StuccoEstimateCalculator /> {/* <VideoBg /> */}
+      <StuccoEstimateCalculator />
       <CTA />
       <Gallery />
       <Testimonial />
