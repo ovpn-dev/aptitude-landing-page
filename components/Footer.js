@@ -52,7 +52,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="http://www.aptitudeassociates.com/contact"
+                  href="https://calendly.com/aptitudecalls"
                   class="hover:underline"
                 >
                   Contact

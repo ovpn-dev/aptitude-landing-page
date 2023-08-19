@@ -15,7 +15,7 @@ const navigation = [
     name: "Painting & Siding",
     href: "http://www.aptitudeassociates.com/painting-siding-services",
   },
-  { name: "Contact", href: "http://www.aptitudeassociates.com/contact" },
+  { name: "Contact", href: "https://calendly.com/aptitudecalls" },
 ];
 
 export default function Nav() {
