@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a
-              href="https://aptitudeassociates.com/"
+              href="http://aptitudeassociates.com/"
               class="flex items-center mb-4 sm:mb-0"
             >
               <Image src={logo} className="h-16 w-auto" alt="Aptitude logo" />
@@ -63,7 +63,7 @@ export default function Footer() {
           <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © Copyright {currentYear} -
-            <a href="https://aptitudeassociates.com/" class="hover:underline">
+            <a href="http://aptitudeassociates.com/" class="hover:underline">
               Aptitude Associates Inc
             </a>
             . All Rights Reserved.
