@@ -11,6 +11,7 @@ import Nav from "../components/Nav";
 import Testimonial from "../components/Testimonials";
 import StuccoEstimateCalculator from "../components/estimateCalc";
 import VideoHero from "../components/Videobg";
+import FacebookPixel from "../components/FacebookPixel";
 
 export default function Home() {
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function Home() {
       <Gallery />
       <Testimonial />
       <Footer />
+      <FacebookPixel />
     </>
   );
 }
