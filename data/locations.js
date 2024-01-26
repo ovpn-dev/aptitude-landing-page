@@ -13047,7 +13047,7 @@ const jobsiteLocations = [
     id: 2178,
     address: "16196 Kayla Cove Ct, Jacksonville, FL 32218",
     latitude: "30.53361461",
-    longitude: "-81.61704304",
+    longitude: "-81.61704305",
   },
 ];
 

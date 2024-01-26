@@ -13,10 +13,6 @@ export default function VideoBg() {
           mozallowfullscreen
           allowfullscreen
         ></iframe>
-        {/* <Image
-          src={vdtest}
-          className="min-w-full min-h-full object-cover img-responsive absolute"
-        ></Image> */}
       </div>
       <div class="video-content my-10 space-y-2">
         <div

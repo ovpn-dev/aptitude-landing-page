@@ -1,13 +1,10 @@
 "use client";
 import { useEffect } from "react";
-import GeoHome from "../components/geoHome";
-
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import Gallery from "../components/gallery";
 import Nav from "../components/Nav";
-
 import Testimonial from "../components/Testimonials";
 import StuccoEstimateCalculator from "../components/estimateCalc";
 import VideoHero from "../components/Videobg";
