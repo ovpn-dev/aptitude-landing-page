@@ -38,7 +38,6 @@ export default function VideoBg() {
           </div> */}
         </div>
         <div className="mx-auto max-w-4xl py-32 sm:py-36 lg:py-36">
-          {" "}
           <div className="text-center">
             <h1 className=" text-4xl font-bold tracking-tight text-gray-900 md:text-5xl sm:text-6xl">
               STUCCO RESTORATION & FULL PAINTING
