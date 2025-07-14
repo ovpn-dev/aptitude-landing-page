@@ -1,56 +1,56 @@
-// App Router version - app/api/geocode/route.js
-import axios from "axios";
+// app/api/geocode/route.js
 
-export async function POST(request) {
-  const { address } = await request.json();
+import { NextResponse } from "next/server";
 
-  if (!address) {
-    return Response.json({ message: "Address is required" }, { status: 400 });
-  }
-
+export async function POST(req) {
   try {
-    // Optional: Add a small delay to respect Nominatim's rate limits
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const { address } = await req.json();
 
-    const response = await axios.get(
-      "https://nominatim.openstreetmap.org/search",
-      {
-        params: {
-          q: address,
-          format: "json",
-          limit: 1,
-        },
-        headers: {
-          "User-Agent":
-            "Aptitude Associates/1.0 (office@aptitudeassociates.com)", // Required by Nominatim - replace with your details
-        },
-      }
-    );
+    if (!address) {
+      return NextResponse.json(
+        { error: "Address is required." },
+        { status: 400 }
+      );
+    }
 
-    if (response.data.length > 0) {
-      const location = response.data[0];
-      const coordinates = {
-        latitude: parseFloat(location.lat),
-        longitude: parseFloat(location.lon),
-      };
+    const apiKey = process.env.OPENCAGE_API_KEY;
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
+      address
+    )}&key=${apiKey}&limit=1`;
 
-      return Response.json({ coordinates });
-    } else {
-      return Response.json(
-        {
-          message:
-            "Failed to geocode the provided address. Please enter a valid address.",
-        },
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.error(await response.text());
+      return NextResponse.json(
+        { error: "Upstream geocoding API failed." },
+        { status: 502 }
+      );
+    }
+
+    const data = await response.json();
+
+    if (!data.results || data.results.length === 0) {
+      return NextResponse.json(
+        { error: "Could not geocode the given address." },
         { status: 404 }
       );
     }
-  } catch (error) {
-    console.error("Geocoding error:", error);
-    return Response.json(
-      {
-        message:
-          "Failed to geocode the provided address. Please enter a valid address.",
-      },
+
+    const { lat, lng } = data.results[0].geometry;
+
+    if (typeof lat !== "number" || typeof lng !== "number") {
+      return NextResponse.json(
+        { error: "Invalid geocode response." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ lat, lng });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      { error: "Internal server error." },
       { status: 500 }
     );
   }
