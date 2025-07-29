@@ -2,22 +2,7 @@
 
 import { useState } from "react";
 import jobsiteLocations from "../data/locations";
-
-const geolib = require("geolib");
-
-const findNearestLocations = (referencePoint, locations, topN) => {
-  const distances = locations.map((location) => ({
-    ...location,
-    distance: geolib.getDistance(referencePoint, {
-      latitude: location.latitude,
-      longitude: location.longitude,
-    }),
-  }));
-
-  distances.sort((a, b) => a.distance - b.distance);
-
-  return distances.slice(0, topN).map((location) => location.address);
-};
+import { geocodeAddress, findNearestLocations } from "../services/locationService";
 
 export default function GeoHome() {
   const [userLocation, setUserLocation] = useState("");
@@ -25,53 +10,46 @@ export default function GeoHome() {
   const [nearestLocations, setNearestLocations] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const topN = 5;
+  const topN = 5; // top 5 nearest locations
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(null);
     setCoordinates(null);
     setShowLocations(false);
-    setLoading(true);
+    setIsLoading(true);
 
     try {
-      const response = await fetch("/api/geocode", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ address: userLocation }),
-      });
+      const geocodingResult = await geocodeAddress(userLocation);
 
-      const result = await response.json();
+      if (geocodingResult.success) {
+        const referencePoint = geocodingResult.coordinates;
+        setCoordinates(referencePoint);
+        
+        console.log("Latitude:", referencePoint.latitude);
+        console.log("Longitude:", referencePoint.longitude);
+        console.log("Formatted Address:", geocodingResult.formattedAddress);
 
-      if (!response.ok) {
-        setErrorMessage(result?.error || "Something went wrong.");
-        return;
+        // Find the nearest locations using the geocoded user location
+        const locations = findNearestLocations(
+          referencePoint,
+          jobsiteLocations,
+          topN
+        );
+
+        console.log(locations);
+        setNearestLocations(locations);
+        setShowLocations(true);
+      } else {
+        setErrorMessage(geocodingResult.error);
       }
-
-      const { lat, lng } = result;
-
-      const referencePoint = { latitude: lat, longitude: lng };
-      setCoordinates(referencePoint);
-
-      const locations = findNearestLocations(
-        referencePoint,
-        jobsiteLocations,
-        topN
-      );
-
-      setNearestLocations(locations);
-      setShowLocations(true);
     } catch (error) {
-      console.error(error);
-      setErrorMessage(
-        "Something went wrong. Please enter a valid address and try again."
-      );
+      console.error("Error:", error);
+      setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -83,7 +61,6 @@ export default function GeoHome() {
       <h3 className="mb-2 text-sm font-medium text-gray-900">
         Simply enter your address to see homes we have completed nearby.
       </h3>
-
       <form onSubmit={handleSubmit}>
         <div className="relative">
           <input
@@ -91,47 +68,85 @@ export default function GeoHome() {
             id="address"
             value={userLocation}
             onChange={(e) => setUserLocation(e.target.value)}
-            className="block w-full p-4 pl-10 text-xs text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+            className="block w-full p-4 pl-10 text-xs text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter your address here..."
             required
+            disabled={isLoading}
           />
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </div>
         </div>
         <div className="mt-5">
           <button
             type="submit"
-            disabled={loading}
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-xs px-3 py-2 disabled:opacity-50"
+            className="text-white right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-xs px-3 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isLoading}
           >
-            {loading ? "Searching..." : "Search for completed jobs near you"}
+            {isLoading ? "Searching..." : "Search for completed jobs near you"}
           </button>
         </div>
       </form>
 
       {errorMessage && (
-        <p className="mt-3 text-sm text-red-600">Error: {errorMessage}</p>
-      )}
-
-      {loading && (
-        <p className="mt-3 text-sm text-gray-700">Fetching location...</p>
+        <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          Error: {errorMessage}
+        </div>
       )}
 
       {showLocations && (
-        <div className="mt-5">
-          <h2 className="text-md font-semibold text-center tracking-tight text-gray-900 sm:text-md">
-            We are excited to showcase our expertise through real-life examples
-            — the following homes were recently restored and painted by our
+        <div className="mt-6">
+          <h2 className="text-md font-semibold text-center tracking-tight text-gray-900 sm:text-md mb-4">
+            We are excited to showcase our expertise through real-life examples,
+            the following homes were recently restored and painted by our
             company:
           </h2>
-          <ul className="mt-4">
+          <div className="space-y-3">
             {nearestLocations.map((location, index) => (
-              <li
+              <div
                 key={index}
-                className="text-md font-medium text-center text-gray-800"
+                className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
               >
-                {location}
-              </li>
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-gray-900 text-left">
+                      {location.address}
+                    </div>
+                  </div>
+                  <div className="ml-4 text-right">
+                    <div className="text-sm font-semibold text-blue-600">
+                      {location.distanceKm} km
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {location.distanceMiles} miles
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-2 text-xs text-gray-400">
+                  #{index + 1} closest location
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
+          {coordinates && (
+            <div className="mt-4 text-xs text-gray-500">
+              Distances calculated from: {coordinates.latitude.toFixed(4)}, {coordinates.longitude.toFixed(4)}
+            </div>
+          )}
         </div>
       )}
     </div>
