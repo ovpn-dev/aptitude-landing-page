@@ -110,43 +110,22 @@ export default function GeoHome() {
 
       {showLocations && (
         <div className="mt-6">
-          <h2 className="text-md font-semibold text-center tracking-tight text-gray-900 sm:text-md mb-4">
+          <h2 className="text-md font-semibold text-center tracking-tight text-gray-900 sm:text-md">
             We are excited to showcase our expertise through real-life examples,
             the following homes were recently restored and painted by our
             company:
           </h2>
-          <div className="space-y-3">
+          <br />
+          <ul>
             {nearestLocations.map((location, index) => (
-              <div
+              <li
                 key={index}
-                className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+                className="text-md font-semibold text-center tracking-tight text-gray-900 sm:text-md"
               >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-900 text-left">
-                      {location.address}
-                    </div>
-                  </div>
-                  <div className="ml-4 text-right">
-                    <div className="text-sm font-semibold text-blue-600">
-                      {location.distanceKm} km
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {location.distanceMiles} miles
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-2 text-xs text-gray-400">
-                  #{index + 1} closest location
-                </div>
-              </div>
+                {location.address} ({location.distanceKm} km)
+              </li>
             ))}
-          </div>
-          {coordinates && (
-            <div className="mt-4 text-xs text-gray-500">
-              Distances calculated from: {coordinates.latitude.toFixed(4)}, {coordinates.longitude.toFixed(4)}
-            </div>
-          )}
+          </ul>
         </div>
       )}
     </div>
